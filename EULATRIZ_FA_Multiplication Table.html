@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Multiplication Table Generator </title>
+<style>
+	body {
+		background-color: #fffae8;
+	}
+	table{
+		border: 3px solid black; text-align: center; border-collapse:collapse; background-color: #fff5d1; 
+	}
+	tr, td{
+		border: 1px solid black; text-align: center; border-collapse: collapse; padding:15px; width: 250 px; font-size: 20px; font-weight: bold;
+	}
+</style>
+
+</head>
+
+<body>
+
+<script>
+	function displayTable() {
+  		var n = prompt('Enter the number of rows (2-10):');
+ 		while (n < 2 || n > 10 ) {
+  		n = prompt('Invalid input. Enter the number of rows (2-10):');
+  		}
+  		var m = prompt('Enter the number of columns (2-10):');
+  		while (m < 2 || m > 10 ) {
+  		m = prompt('Invalid input. Enter the number of columns (2-10):');
+  		}
+
+  	var table = generate(n,m);
+  	document.body.appendChild(table);
+	}
+
+	displayTable();
+
+	function generate(n, m) {
+  		var table = document.createElement('table');
+		var header = document.createElement('tr');
+  		for (var i = 0; i <= m; i++) {
+    		var headerCell = document.createElement('td');
+    		headerCell.textContent = i;
+    		header.appendChild(headerCell);
+  	}
+  	table.appendChild(header);
+
+  	for (var i = 1; i <= n; i++) {
+    		var bodyR = document.createElement('tr');
+    		var bodyCell = document.createElement('td');
+    		bodyCell.textContent = i;
+    		bodyR.appendChild(bodyCell);
+    		for (var x = 1; x <= m; x++) {
+      		bodyCell = document.createElement('td');
+      		bodyCell.textContent = i * x;
+      		bodyR.appendChild(bodyCell);
+    	}
+    	table.appendChild(bodyR);
+  	}
+
+  return table;
+}
+
+</script>
+
+</body>
+
+</html>
